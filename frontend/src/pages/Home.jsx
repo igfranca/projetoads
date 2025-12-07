@@ -1,21 +1,31 @@
-import React from 'react'
-import Item from '../components/Item'
+import React, { useEffect, useState } from "react";
+import Item from "../components/Item";
+import axios from "axios";
 
 const Home = () => {
-  return (
-      <section>
-        <div className="gap-8 grid grid-cols-[repeat(auto-fit,minmax(225px,1fr))] mx-auto max-w-7xl px-8 py-8">
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-        </div>
-      </section>
-  )
-}
+  const [places, setPlaces] = useState([]);
 
-export default Home
+  useEffect(() => {
+    const axiosGet = async () => {
+      const { data } = await axios.get("/places");
+      setPlaces(data);
+    };
+
+    axiosGet();
+  }, []);
+
+  return (
+    <section>
+      <div className="mx-auto grid max-w-full grid-cols-[repeat(auto-fit,minmax(225px,1fr))] gap-8 p-8 lg:max-w-7xl">
+        {places.map((place) => (
+          <Item {...{ place }} key={place._id} />
+        ))}
+        {places.map((place) => (
+          <Item {...{ place }} key={place._id} />
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default Home;

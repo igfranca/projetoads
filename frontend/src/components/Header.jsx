@@ -1,22 +1,23 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import { useUserContext } from '../contexts/UserContext';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useUserContext } from "../contexts/UserContext";
 
 const Header = () => {
   const { user } = useUserContext();
+
   return (
     <header className="shadow-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-8">
-        <Link to='/' className='flex items-center'>
+        <Link to="/" className="flex items-center">
           <img
             className="h-10"
             src="https://cdn.prod.website-files.com/61b9e0dd381626819c8d4f83/65e2198d48039ba6444f602b_logo%20hashtag%20-%20h.webp"
             alt="Logo da Hashtag"
           />
-          <p className="text-primary-400 text-2xl font-bold">Site</p>
+          <p className="text-primary-400 text-2xl font-bold">ashbnb</p>
         </Link>
 
-      <Link
+        <Link
           to="/"
           className="hidden items-center rounded-full border border-gray-300 py-2 pr-4 pl-6 shadow-md lg:flex"
         >
@@ -33,18 +34,19 @@ const Header = () => {
               stroke="currentColor"
               className="size-4"
             >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-            />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+              />
             </svg>
           </div>
         </Link>
 
-        <Link to={user ? "/account/profile" : "/login"} 
-          className='flex items-center gap-2 rounded-full border border-gray-300 py-2 pr-4 pl-6 shadow-md'>
-
+        <Link
+          to={user ? "/account/profile" : "/login"}
+          className="flex items-center gap-2 rounded-full border border-gray-300 py-2 pr-4 pl-6 shadow-md"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -72,7 +74,7 @@ const Header = () => {
           </svg>
 
           {user ? (
-            <p className='sm:max-w-32 max-w-20 truncate'>{user.name}</p>
+            <p className="max-w-20 truncate sm:max-w-32">{user.name}</p>
           ) : (
             <></>
           )}
